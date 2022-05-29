@@ -28,5 +28,10 @@ return array(
         'auto_color' => false,
         'line_color' => array('r' => 0, 'g' => 0, 'b' => 0),
         'is_hyaline' => false
+    ),
+    'getGenerateScheme' => array(
+        'scene' => '',
+        'page' => 'page/index/index',
+        'id'=>1
     )
 );

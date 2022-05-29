@@ -23,6 +23,8 @@ class MiniProgram
     const WXAQRCODE_PATH = '/cgi-bin/wxaapp/createwxaqrcode?';
     const WXACODE_PATH = '/wxa/getwxacode?';
     const WXACODE_UNLIMIT_PATH = '/wxa/getwxacodeunlimit?';
+    const WX_GENERATE_SCHEME = '/wxa/generatescheme?';
+
 
     /**
      * MiniProgram constructor.
@@ -196,4 +198,23 @@ class MiniProgram
         $res = Common::httpRequest($url, json_encode($finalParamArr));
         return $res;
     }
+
+
+    /**
+     * URL LINK
+     * @param array $postParamArr
+     * @return mixed
+     */
+    public function getGenerateScheme($postParamArr = array())
+    {
+        $finalParamArr = Common::extendArrayData($this->defaultParamInfo[__FUNCTION__], $postParamArr);
+        $urlParamArr = array(
+            'access_token' => $this->accessToken
+        );
+        $url = self::API_HOST . self::WX_GENERATE_SCHEME . http_build_query($urlParamArr);
+        $res = Common::httpRequest($url, json_encode($finalParamArr));
+        return $res;
+    }
 }
+
+

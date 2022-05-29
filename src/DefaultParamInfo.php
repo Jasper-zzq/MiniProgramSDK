@@ -30,8 +30,9 @@ return array(
         'is_hyaline' => false
     ),
     'getGenerateScheme' => array(
-        'scene' => '',
-        'page' => 'page/index/index',
-        'id'=>1
+        'jump_wxa' => array('query' => 0,  'path' => "page/index"),
+        'expire_time' => 30,
+    ),
+    'getUrlLink' => array(
     )
 );

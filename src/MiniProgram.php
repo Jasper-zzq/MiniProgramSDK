@@ -24,7 +24,7 @@ class MiniProgram
     const WXACODE_PATH = '/wxa/getwxacode?';
     const WXACODE_UNLIMIT_PATH = '/wxa/getwxacodeunlimit?';
     const WX_GENERATE_SCHEME = '/wxa/generatescheme?';
-
+    const WX_URL_LINK = '/wxa/generate_urllink?';
 
     /**
      * MiniProgram constructor.
@@ -201,17 +201,33 @@ class MiniProgram
 
 
     /**
-     * URL LINK
+     * URL Scheme
      * @param array $postParamArr
      * @return mixed
      */
     public function getGenerateScheme($postParamArr = array())
     {
-        $finalParamArr = Common::extendArrayData($this->defaultParamInfo[__FUNCTION__], $postParamArr);
         $urlParamArr = array(
             'access_token' => $this->accessToken
         );
         $url = self::API_HOST . self::WX_GENERATE_SCHEME . http_build_query($urlParamArr);
+        $finalParamArr = Common::extendArrayData($this->defaultParamInfo[__FUNCTION__], $postParamArr);
+        $res = Common::httpRequest($url, json_encode($finalParamArr));
+        return $res;
+    }
+
+    /**
+     * Url Link
+     * @param array $postParamArr
+     * @return mixed
+     */
+    public function getUrlLink($postParamArr = array())
+    {
+        $urlParamArr = array(
+            'access_token' => $this->accessToken
+        );
+        $url = self::API_HOST . self::WX_URL_LINK . http_build_query($urlParamArr);
+        $finalParamArr = Common::extendArrayData($this->defaultParamInfo[__FUNCTION__], $postParamArr);
         $res = Common::httpRequest($url, json_encode($finalParamArr));
         return $res;
     }
